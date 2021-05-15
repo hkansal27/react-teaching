@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReactJs</title>
+
+    <!-- cnd -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        .high {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script>
+        // Simple JS
+        //    const newDiv = document.createElement("div"); // <div></div>
+        //    const newContent = document.createTextNode("Hello world from JS"); // Hello world
+        //    newDiv.appendChild(newContent); // <div> Hello world </div>
+        //    document.getElementById('root').append(newDiv); // <div id="root"><div> Hello world </div></div>
+
+        // ReactJs
+        // ReactDOM.render(React.createElement("div", {className: 'high'}, "Hello world from React"), document.getElementById('root'));
+    </script>
+
+    <script type="text/babel">
+        // ReactJs + JSX(2nd react popular)
+        // component
+        // capital letter 
+
+        class App1 extends React.Component {
+
+            constructor(props) {
+                super(props);
+                this.state = {
+                    data: new Date().toLocaleTimeString()
+                }
+
+                setInterval(() => {
+                    this.setState({data: new Date().toLocaleTimeString()})
+
+                    // setState()
+                    // render()
+                }, 1000)
+            }
+
+
+            render() {
+                return <div className="high"> Hello world from React + JSX {this.state.data} {this.props.name}</div>
+            }
+        }
+
+        function App(props) {
+            // hooks(16.8) -> state
+            // always prefer functional component
+            // how we are going to manage? -> solution -> hooks
+            return <div className="high"> Hello world from React + JSX {new Date().toLocaleTimeString()} {props.age}</div>
+        }
+
+        ReactDOM.render(<App1 name="Himanshu" age="25"/>, document.getElementById('root'));
+        // setInterval(() => {
+        //     ReactDOM.render(<App1 name="Himanshu" age="25"/>, document.getElementById('root'));
+        // }, 1000)
+        
+        // <App name="Himanshu" age="25"/>
+        // App({name: "Himanshu", age: "25"})
+    </script>
+
+
+</body>
+
+</html>
